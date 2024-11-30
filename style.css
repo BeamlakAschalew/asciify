@@ -1,0 +1,39 @@
+#top-heading {
+    background-color: rgb(244, 244, 244);
+}
+
+body {
+    font-family: Figtree, sans-serif;
+}
+
+.title {
+    font-family: Hack, monospace;
+}
+
+.image-card {
+    border: 2px dotted #6c757d;
+    border-radius: 8px;      
+}
+
+#main {
+    border: 2px solid rgb(244, 244, 244);
+    margin: 15px;
+    padding: 25px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.main-section {
+    margin: 3%;
+}
+
+pre {
+    font-family: 'Courier new', Hack, monospace;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+#upload-card:hover {
+    cursor: pointer;
+}
