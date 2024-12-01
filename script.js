@@ -1,4 +1,4 @@
-let ASCII_CHARACTERS = " .:-=+*#%@".split("").reverse().join("");
+let ASCII_CHARACTERS = "█▓▒░@%#*+=-:. ";
 let originalImageData = null;
 let resized = null;
 const CHARACTER_ASPECT_RATIO = 2.7;

@@ -19,13 +19,7 @@ body {
     border: 2px solid rgb(244, 244, 244);
     margin: 15px;
     padding: 25px;
-    width: 100%;
-    max-width: 100%;
     border-radius: 8px;
-}
-
-.main-section {
-    margin: 3%;
 }
 
 pre {
@@ -33,7 +27,8 @@ pre {
     overflow-y: scroll;
     overflow-x: scroll;
     width: 100%;
-    font-size: 5px;
+    font-size: 7px;
+    text-align: center;
 }
 
 #upload-card:hover {

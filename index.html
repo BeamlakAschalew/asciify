@@ -39,78 +39,77 @@
     </div>
 
     <!-- main body -->
-    <div class="main-section">
-      <div id="main" class="container">
-        <div class="row">
-          <!-- Image section -->
-          <div class="col-md-6">
-            <div class="card my-4">
-              <div
-                class="card-body d-flex flex-column justify-content-center align-items-center"
-              >
-                <h4 class="card-title no-image">No image</h4>
-                <img alt="" src="" id="uploaded-image" />
-                <canvas id="canvas" style="display: none"></canvas>
-              </div>
-            </div>
-            <div class="card image-card my-4" id="upload-card">
-              <div
-                class="card-body d-flex flex-column justify-content-center align-items-center"
-              >
-                <p class="card-text">Click here to upload an image</p>
-              </div>
-            </div>
-            <input
-              type="file"
-              id="image-upload"
-              style="display: none"
-              accept="image/*"
-            />
-          </div>
 
-          <!-- Customize section -->
-          <div class="col-md-6">
-            <div class="d-flex flex-column my-4">
-              <div class="perference-container my-2">
-                <label
-                  id="brightness-label"
-                  for="brightness-range"
-                  class="form-label"
-                  >Brightness 100</label
-                >
-                <input
-                  type="range"
-                  class="form-range"
-                  id="brightness-range"
-                  min="0"
-                  max="200"
-                  value="100"
-                />
-              </div>
-              <div class="preference-container my-2">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Reverse characters (space for dark)
-                </label>
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="reverse-box"
-                />
-              </div>
-              <div class="preference-container my-2">
-                <label id="characters-label" for="characters-range">
-                  Total characters 200
-                </label>
-                <input
-                  type="range"
-                  class="form-range"
-                  id="characters-range"
-                  min="100"
-                  max="600"
-                  value="200"
-                />
-              </div>
+    <div id="main">
+      <div class="row">
+        <!-- Image section -->
+        <div class="col-md-6">
+          <div class="card my-4">
+            <div
+              class="card-body d-flex flex-column justify-content-center align-items-center"
+            >
+              <h4 class="card-title no-image">No image</h4>
+              <img alt="" src="" id="uploaded-image" />
+              <canvas id="canvas" style="display: none"></canvas>
+            </div>
+          </div>
+          <div class="card image-card my-4" id="upload-card">
+            <div
+              class="card-body d-flex flex-column justify-content-center align-items-center"
+            >
+              <p class="card-text">Click here to upload an image</p>
+            </div>
+          </div>
+          <input
+            type="file"
+            id="image-upload"
+            style="display: none"
+            accept="image/*"
+          />
+        </div>
+
+        <!-- Customize section -->
+        <div class="col-md-6">
+          <div class="d-flex flex-column my-4">
+            <div class="perference-container my-2">
+              <label
+                id="brightness-label"
+                for="brightness-range"
+                class="form-label"
+                >Brightness 100</label
+              >
+              <input
+                type="range"
+                class="form-range"
+                id="brightness-range"
+                min="0"
+                max="200"
+                value="100"
+              />
+            </div>
+            <div class="preference-container my-2">
+              <label class="form-check-label" for="flexCheckDefault">
+                Reverse characters (space for dark)
+              </label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="reverse-box"
+              />
+            </div>
+            <div class="preference-container my-2">
+              <label id="characters-label" for="characters-range">
+                Total characters 200
+              </label>
+              <input
+                type="range"
+                class="form-range"
+                id="characters-range"
+                min="100"
+                max="600"
+                value="200"
+              />
             </div>
           </div>
         </div>
