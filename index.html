@@ -31,7 +31,7 @@
   </head>
   <body>
     <!-- Top heading -->
-    <div id="top-heading" class="text-center py-5 my-5">
+    <div id="top-heading" class="text-center py-5 my-3">
       <h1 class="mb-3 title">asciify</h1>
       <p class="text-muted">
         Convert your images into ascii characters with ease
@@ -119,11 +119,26 @@
 
     <div id="output" class="my-5 mx-2">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="output-pre">
           <pre></pre>
+        </div>
+        <div class="col-lg-12" id="no-pre">
+          <p
+            class="border d-flex flex-column justify-content-center align-items-center py-4 rounded-2"
+          >
+            No output since there is no image
+          </p>
         </div>
       </div>
     </div>
+
+    <footer id="site-footer" class="text-center py-3 my-2">
+      <h6 class="title pt-1">
+        Made with 💞 By <a href="https://beamlak.dev"> Beamlak Aschalew</a> by
+        using JIMP, bootstrap and jQuery
+      </h6>
+      <p></p>
+    </footer>
 
     <script src="script.js"></script>
   </body>

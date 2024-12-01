@@ -1,4 +1,4 @@
-#top-heading {
+#top-heading, #site-footer {
     background-color: rgb(244, 244, 244);
 }
 
@@ -43,3 +43,9 @@ pre {
 #uploaded-image {
     max-height: 300px;
 }
+
+
+#site-footer a {
+    text-decoration: none;
+}
+  

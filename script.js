@@ -6,6 +6,7 @@ let brightness = 100;
 let totalCharacters = 200;
 
 $(document).ready(function () {
+  $("#output-pre").hide();
   $("#upload-card").on("click", function () {
     $("#image-upload").click();
   });
@@ -17,6 +18,8 @@ $(document).ready(function () {
       const reader = new FileReader();
       reader.onload = function (e) {
         processImageWithJimp(e.target.result);
+        $("#output-pre").show();
+        $("#no-pre").hide();
       };
       reader.readAsDataURL(file);
     }
