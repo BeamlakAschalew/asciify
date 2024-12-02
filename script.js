@@ -1,9 +1,11 @@
-let ASCII_CHARACTERS = "█▓▒░@%#*+=-:. ";
+let ASCII_CHARACTERS = "@%#WMH*+=-:. ";
+
 let originalImageData = null;
 let resized = null;
 const CHARACTER_ASPECT_RATIO = 2.7;
 let brightness = 100;
 let totalCharacters = 200;
+let generatedAscii = "";
 
 $(document).ready(function () {
   $("#output-pre").hide();
@@ -50,6 +52,10 @@ $(document).ready(function () {
       processNewSize(totalCharacters);
     }
   });
+
+  $("#copy-clipboard").on("click", () => {});
+
+  $("#download-txt").on("click", downloadAsciiText);
 });
 
 async function processImageWithJimp(imageSrc) {
@@ -110,11 +116,35 @@ function convertToAscii(jimpImage, brightness) {
     }
     asciiArt.push(row);
   }
-
-  $("#output pre").text(asciiArt.join("\n"));
+  generatedAscii = asciiArt.join("\n");
+  $("#output pre").text(generatedAscii);
 }
 
 function brightnessToAscii(brightness) {
   const index = Math.floor((brightness / 255) * (ASCII_CHARACTERS.length - 1));
   return ASCII_CHARACTERS[index];
+}
+
+function downloadAsciiText() {
+  const text = generatedAscii;
+  const asciiArt = $("#output pre").text().trim();
+
+  const normalizedAscii = normalizeLineLengths(asciiArt);
+  const blob = new Blob([normalizedAscii], {
+    type: "text/plain;charset=utf-16",
+  });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `${Date.now()}.txt`;
+
+  link.click();
+
+  URL.revokeObjectURL(link.href);
+}
+
+function normalizeLineLengths(asciiArt) {
+  const lines = asciiArt.split("\n");
+  const maxLength = Math.max(...lines.map((line) => line.length));
+  return lines.map((line) => line.padEnd(maxLength, " ")).join("\n");
 }
