@@ -165,6 +165,28 @@ async function downloadAsPng() {
     image.print(font, 10, index * 28, line);
   });
 
+  const watermarkText = "https://beamlak.dev/asciify";
+  const watermarkFont = await Jimp.loadFont(fontUrl);
+
+  const watermarkWidth = Jimp.measureText(watermarkFont, watermarkText);
+  const watermarkHeight = Jimp.measureTextHeight(
+    watermarkFont,
+    watermarkText,
+    maxWidth
+  );
+  const watermarkX = maxWidth - watermarkWidth - 10;
+  const watermarkY = imageHeight - watermarkHeight - 10;
+
+  const greyColor = Jimp.rgbaToInt(165, 165, 165, 255);
+
+  for (let y = watermarkY - 5; y < watermarkY + watermarkHeight + 5; y++) {
+    for (let x = watermarkX - 5; x < watermarkX + watermarkWidth + 5; x++) {
+      image.setPixelColor(greyColor, x, y);
+    }
+  }
+
+  image.print(watermarkFont, watermarkX, watermarkY, watermarkText);
+
   image.getBase64(Jimp.MIME_PNG, (err, src) => {
     if (err) {
       console.error("Error generating image:", err);
