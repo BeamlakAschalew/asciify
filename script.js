@@ -53,9 +53,11 @@ $(document).ready(function () {
     }
   });
 
-  $("#copy-clipboard").on("click", () => {});
+  $("#copy-clipboard").on("click", copyToClipboard);
 
   $("#download-txt").on("click", downloadAsciiText);
+
+  $("#download-png").on("click", downloadAsPng);
 });
 
 async function processImageWithJimp(imageSrc) {
@@ -147,4 +149,46 @@ function normalizeLineLengths(asciiArt) {
   const lines = asciiArt.split("\n");
   const maxLength = Math.max(...lines.map((line) => line.length));
   return lines.map((line) => line.padEnd(maxLength, " ")).join("\n");
+}
+
+async function downloadAsPng() {
+  const lines = generatedAscii.split("\n");
+  const charWidth = 10;
+  const maxWidth = Math.max(...lines.map((line) => line.length)) * charWidth;
+  const imageHeight = lines.length * 28;
+
+  const image = await new Jimp(maxWidth, imageHeight, 0xffffffff);
+  const fontUrl = "../assets/hk.fnt";
+  const font = await Jimp.loadFont(fontUrl);
+
+  lines.forEach((line, index) => {
+    image.print(font, 10, index * 28, line);
+  });
+
+  image.getBase64(Jimp.MIME_PNG, (err, src) => {
+    if (err) {
+      console.error("Error generating image:", err);
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = src;
+    link.download = `${Date.now()}-ascii-image.png`;
+    link.click();
+  });
+}
+
+function copyToClipboard() {
+  navigator.clipboard
+    .writeText(generatedAscii)
+    .then(function () {
+      $("#info-box").fadeIn();
+
+      setTimeout(function () {
+        $("#info-box").fadeOut();
+      }, 3000);
+    })
+    .catch(function (error) {
+      console.error("Error copying text: ", error);
+    });
 }
